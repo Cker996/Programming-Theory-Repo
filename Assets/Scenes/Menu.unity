@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 631636911}
   - component: {fileID: 631636910}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Load Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,6 +520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa965f32789832478934ecc7160906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  playerData: []
 --- !u!4 &631636911
 Transform:
   m_ObjectHideFlags: 0
@@ -1712,7 +1714,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
