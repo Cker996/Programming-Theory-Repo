@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class UIHandler : MonoBehaviour
+// INHERITANCE
+public class UIHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -35,5 +36,10 @@ public abstract class UIHandler : MonoBehaviour
     public virtual void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public virtual void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

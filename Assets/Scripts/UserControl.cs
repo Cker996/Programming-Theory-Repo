@@ -22,6 +22,7 @@ public class UserControl : MonoBehaviour
     private int round = 10;
     private int arrowRoundNum = 0;
 
+    // ENCAPSULATION
     public int arrowLeft { get; private set; }
     // Start is called before the first frame update
     void Start()
