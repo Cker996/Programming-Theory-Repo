@@ -392,7 +392,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483013108
 MonoBehaviour:
@@ -441,8 +441,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -520,8 +520,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa965f32789832478934ecc7160906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   playerData: []
+  config:
+    difficultyLevel: 0
+    ammo: 0
+    generateNum: 0
+    regenerateSec: 0
+    fullScreen: 0
+  player:
+    scoreArrow: 0
+    arrowNum: 0
+    score: 0
+    name: 
+  bestPlayer:
+    scoreArrow: 0
+    arrowNum: 0
+    score: 0
+    name: 
 --- !u!4 &631636911
 Transform:
   m_ObjectHideFlags: 0
@@ -567,16 +582,16 @@ RectTransform:
   m_Children:
   - {fileID: 2002835787}
   - {fileID: 940526476}
-  - {fileID: 1260358115}
-  - {fileID: 1693979900}
   - {fileID: 1123444133}
+  - {fileID: 1693979900}
+  - {fileID: 1260358115}
   m_Father: {fileID: 1419931653}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 160}
+  m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &637097848
 GameObject:
@@ -614,7 +629,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &637097850
 MonoBehaviour:
@@ -663,8 +678,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1387,13 +1402,13 @@ RectTransform:
   m_Children:
   - {fileID: 743332795}
   m_Father: {fileID: 632251714}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 180, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 1, y: 0}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1123444134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,13 +1536,13 @@ RectTransform:
   m_Children:
   - {fileID: 984940630}
   m_Father: {fileID: 632251714}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 180, y: 0}
   m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 1, y: 1}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1260358116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,7 +1671,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 483013108}
   playerName: {fileID: 2002835788}
-  abc: {fileID: 0}
 --- !u!114 &1323785271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1774,10 +1788,10 @@ RectTransform:
   m_Father: {fileID: 1610189966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: -60}
+  m_SizeDelta: {x: -400, y: -60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419931654
 MonoBehaviour:
@@ -1796,8 +1810,8 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 20
+  m_ChildAlignment: 4
+  m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1

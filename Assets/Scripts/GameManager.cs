@@ -7,15 +7,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public TextMeshProUGUI scoreText;
+    public GameObject arrowPrefab;
     public GameObject[] balloons;
-    public float generateNum = 3;
 
     private UserControl userControlScript;
     private float m_regenerateSec = 5;
+    private int m_generateNum = 3;
+    private int m_ammo = 20;
     private int m_score = 0;
     private int spawnCycle = 0;
     private bool m_IsAlive = true;
-    private int m_ammo = 20;
+    private bool gameOver = false;
+
+    // ENCAPSULATION
     public bool IsAlive { get { return m_IsAlive; } }
     public int ammo { get { return m_ammo; } }
     public int score { get { return m_score; } }
@@ -35,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Instance = this;
         InitConfig();
@@ -54,7 +58,38 @@ public class GameManager : MonoBehaviour
 
     void InitConfig()
     {
-
+        if(LoadManager.Instance != null)
+        {
+            if (LoadManager.Instance.config.difficultyLevel != 0)
+            {
+                if(arrowPrefab != null)
+                {
+                    if(LoadManager.Instance.config.difficultyLevel == 1)
+                    {
+                        arrowPrefab.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+                    }
+                    else
+                    {
+                        arrowPrefab.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+                    }
+                }
+                else
+                {
+                    Debug.Log("arrowPrefab is null.");
+                }
+                m_regenerateSec = LoadManager.Instance.config.regenerateSec;
+                m_generateNum = LoadManager.Instance.config.generateNum;
+                m_ammo = LoadManager.Instance.config.ammo;
+            }
+            else
+            {
+                Debug.Log("config didn't set.");
+            }
+        }
+        else
+        {
+            Debug.Log("no LoadManager.");
+        }
     }
 
     IEnumerator SpawnBallon()
@@ -81,7 +116,29 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("can't find UserControlScript.");
         }
+        if (LoadManager.Instance != null)
+        {
+            LoadManager.Instance.player.score = m_score;
+        }
         scoreText.text = "Score: " + m_score;
+        if (!IsAlive && !gameOver)
+        {
+            GameOver();
+            gameOver = true;
+        }
+    }
+
+    void GameOver()
+    {
+        if(LoadManager.Instance != null)
+        {
+            LoadManager.Instance.RefreshScore();
+            LoadManager.Instance.SaveDataBinary();
+        }
+        else
+        {
+            Debug.Log("Can't save data.");
+        }
     }
 
     public void AddScore(int i)
@@ -99,13 +156,13 @@ public class GameManager : MonoBehaviour
     void GenerateBalloons()
     {
 
-        for (int i = 0; i < generateNum; i++)
+        for (int i = 0; i < m_generateNum; i++)
         {
             int balloonIndex = Random.Range(0, balloons.Length);
             Vector3 generatePos = new Vector3(Random.Range(-30.0f, 30.0f), -10, Random.Range(8.0f, 30.0f));
             Instantiate(balloons[balloonIndex], generatePos, balloons[balloonIndex].transform.rotation);
         }
         spawnCycle++;
-        Debug.Log("generate " + spawnCycle + " times.");
+        Debug.Log("generate " + spawnCycle + " times, " + m_generateNum + " balloons.");
     }
 }
